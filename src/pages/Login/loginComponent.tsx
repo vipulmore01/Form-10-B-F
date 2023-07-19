@@ -8,6 +8,7 @@ const MobilePanComponent = () => {
   const navigate = useNavigate()
   const [mobileNumber, setMobileNumber] = useState<string>("")
   const [panNumber, setPanNumber] = useState<string>("")
+  const [errorMessage, setErrorMessage] = useState<string>("")
 
   const handleMobileNumberChange = async (
     event:
@@ -37,9 +38,16 @@ const MobilePanComponent = () => {
         }
       )
 
-      navigate("/home", { state: { responseData: response.data } })
-    } catch (error) {
+      if (response.data.error) {
+        setErrorMessage(response?.data?.msg)
+      } else {
+        navigate("/home", { state: { responseData: response.data } })
+      }
+    } catch (error: any) {
       console.error("API Error:", error)
+      if (error.response && error.response.data && error.response.data?.msg) {
+        setErrorMessage(error?.response?.data.msg)
+      }
     }
   }
   return (
@@ -82,6 +90,7 @@ const MobilePanComponent = () => {
                 handlePanNumberChange(e)
               }}
             />
+            <span style={{ color: "red" }}>{errorMessage}</span>
             <Submit type="submit" variant="contained" color="primary">
               Submit
             </Submit>
