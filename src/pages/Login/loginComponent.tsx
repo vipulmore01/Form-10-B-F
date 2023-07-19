@@ -1,6 +1,6 @@
 import { Box, TextField, Typography } from "@mui/material"
 import { useNavigate } from "react-router-dom"
-import { Main, Submit } from "./mobilePanStyles"
+import { Main, Submit } from "./loginStyles"
 import { useState } from "react"
 import axios from "axios"
 

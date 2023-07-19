@@ -11,7 +11,7 @@ import {
   Button,
 } from "@mui/material"
 import { Download } from "@mui/icons-material"
-import { DownloadBtn } from "../../pages/Login/mobilePanStyles"
+import { DownloadBtn } from "../../pages/Login/loginStyles"
 import { saveAs } from "file-saver"
 import axios, { AxiosResponse } from "axios"
 import { DownloadDiv, PaginationDiv } from "./dataTableStyles"
